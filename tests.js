@@ -32,16 +32,6 @@ testCase('/GET posts', function () {
             });
     });
 
-    // ТестКейс проходит при условии, статус страницы 404
-    /*
-     it("it should NOT GET all the posts", (done) => {
-         chai.request('https://jsonplaceholder.typicode.com')
-             .get('/posts')
-             .end((err, res) => {
-                 res.should.have.status(404);
-                 done();
-         });
-     })*/
 
 });
 
@@ -105,7 +95,7 @@ testCase('/POST posts/', function () {
             .end((err, res) => {
                 res.should.have.status(201); //проверяем статус страницы
                 res.body.should.be.a('object'); // получаем объект
-                res.body.should.have.property('userId').eq(1);// userId = 1
+                res.body.should.have.property('userId').eq(1);
                 res.body.should.have.property('id').eq(101);
                 res.body.should.have.property('title').eq("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
                 res.body.should.have.property('body').eq("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto");
@@ -157,15 +147,64 @@ testCase('/PUT posts/:id', function () {
     });
 
 
-
 })
 
 
-
 //tests for GET	/posts/:id - please create several tests (7 tests or more)
+
+
+
+
+
+
+// ТестКейс проходит при условии, статус страницы 404
+/*
+ it("it should NOT GET all the posts", (done) => {
+     chai.request('https://jsonplaceholder.typicode.com')
+         .get('/posts')
+         .end((err, res) => {
+             res.should.have.status(404);
+             done();
+     });
+ })*/
 
 //tests for POST	/posts - please create few tests (5 tests or more)
 
 
 
+/* TASK 3
+*
+*    Project: Test_Task-QA
+*
+*    Issue Type: Bug
+*
+*    Priority: Major
+*
+*    Author: Alexsey QA auto
+*
+*    Responsible: Collaboration Tool
+*
+*    Status = open
+*
+*    Краткое описание (Summary)* GET /posts/101 return statusCode: 404
+*
+*    Description
+*    Шаги воспроизведения:
+*    1 Ввести в адресную строку браузера: https://jsonplaceholder.typicode.com/posts/101
+*
+*    Ожидаеемый результат:
+*    Согласно спецификации, что в случае отсутствия нужного postId возвращать пустой список
+*
+*    TestRail: Results
+*    https://jsonplaceholder.typicode.com/posts/101
+*    При вызове отствутвующего postId страница не найдена
+*    statusCode: 404
+*    screen.jpg
+*
+*    date:27.04.2021
+*
+*
+*
 
+*
+* */
