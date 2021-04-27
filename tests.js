@@ -31,6 +31,7 @@ testCase('/GET posts', function () {
                 done();
             });
     });
+<<<<<<< HEAD
     // ТестКейс проходит при условии, статус страницы 404
     /*
      it("it should NOT GET all the posts", (done) => {
@@ -41,6 +42,18 @@ testCase('/GET posts', function () {
                  done();
          });
      })*/
+=======
+   // ТестКейс проходит при условии, статус страницы 404
+   /*
+    it("it should NOT GET all the posts", (done) => {
+        chai.request('https://jsonplaceholder.typicode.com')
+            .get('/posts')
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+        });
+    })*/
+>>>>>>> db634b2512751de151078d3e2c429e5bd7ab9b4b
 });
 
 // test GET /posts/:id
@@ -63,6 +76,7 @@ testCase('/GET posts/:id', function () {
     });
 });
 
+<<<<<<< HEAD
 it('it should GET return array', (done) => {
     const userId = '?userid=1';
     chai.request('https://jsonplaceholder.typicode.com')
@@ -74,6 +88,8 @@ it('it should GET return array', (done) => {
         });
 });
 
+=======
+>>>>>>> db634b2512751de151078d3e2c429e5bd7ab9b4b
 it('it should NOT GET one the posts', (done) => {
     const postsId = 123;
     chai.request('https://jsonplaceholder.typicode.com')
@@ -153,7 +169,11 @@ testCase('/PUT posts/:id', function () {
     });
 
 
+<<<<<<< HEAD
 })
+=======
+    })
+>>>>>>> db634b2512751de151078d3e2c429e5bd7ab9b4b
 
 
 //tests for GET	/posts/:id - please create several tests (7 tests or more)
