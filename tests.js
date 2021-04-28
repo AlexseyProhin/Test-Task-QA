@@ -34,7 +34,7 @@ testCase('/GET posts', function () {
 
 
 });
-
+//tests for GET	/posts/:id - please create several tests (7 tests or more)
 // test GET /posts/:id
 testCase('/GET posts/:id', function () {
     it('it should GET a posts by id', (done) => {
@@ -78,8 +78,19 @@ it('it should NOT GET one the posts', (done) => {
             done();
         });
 });
+// ТестКейс проходит при условии, статус страницы 404
+/*
+ it("it should NOT GET all the posts", (done) => {
+     chai.request('https://jsonplaceholder.typicode.com')
+         .get('/posts')
+         .end((err, res) => {
+             res.should.have.status(404);
+             done();
+     });
+ })*/
 
 // tests for POST	/posts
+//tests for POST	/posts - please create few tests (5 tests or more)
 // получаем post от rest api placeholder и проверяем
 testCase('/POST posts/', function () {
     it('it should POST', (done) => {
@@ -102,7 +113,8 @@ testCase('/POST posts/', function () {
                 done();
             });
     });
-    it('it should T POST and create new userId', (done) => {
+
+    it('A page with a non-existent post should be available', (done) => {
         const posts = {
             "userId": 123,
             "id": 1,
@@ -114,6 +126,27 @@ testCase('/POST posts/', function () {
             .send(posts)
             .end((err, res) => {
                 res.should.have.status(201);//проверяем статус страницы
+                done();
+            });
+    });
+
+    it('Should return an object ', (done) => {
+        const posts = {
+            "userId": 1,
+            "id": 1,
+            //"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            //"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        };
+        chai.request('https://jsonplaceholder.typicode.com')
+            .post('/posts')
+            .send(posts)
+            .end((err, res) => {
+                res.should.have.status(201); //проверяем статус страницы
+                res.body.should.be.a('object'); // получаем объект
+                //res.body.should.have.property('userId').eq(1);
+                res.body.should.have.property('id').eq(101);
+               // res.body.should.have.property('title').eq("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+                // res.body.should.have.property('body').eq("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto");
                 done();
             });
     });
@@ -150,25 +183,16 @@ testCase('/PUT posts/:id', function () {
 })
 
 
-//tests for GET	/posts/:id - please create several tests (7 tests or more)
 
 
 
 
 
 
-// ТестКейс проходит при условии, статус страницы 404
-/*
- it("it should NOT GET all the posts", (done) => {
-     chai.request('https://jsonplaceholder.typicode.com')
-         .get('/posts')
-         .end((err, res) => {
-             res.should.have.status(404);
-             done();
-     });
- })*/
 
-//tests for POST	/posts - please create few tests (5 tests or more)
+
+
+
 
 
 
@@ -193,7 +217,7 @@ testCase('/PUT posts/:id', function () {
 *    1 Ввести в адресную строку браузера: https://jsonplaceholder.typicode.com/posts/101
 *
 *    Ожидаеемый результат:
-*    Согласно спецификации, что в случае отсутствия нужного postId возвращать пустой список
+*    Согласно спецификации, что в случае отсутствия нужного postId возвращать пустой список {}
 *
 *    TestRail: Results
 *    https://jsonplaceholder.typicode.com/posts/101
